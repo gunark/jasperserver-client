@@ -1,48 +1,58 @@
-= jasperserver-client
+= JasperServer-Client
 
-* FIX (url)
+* http://jasper-client.rubyforge.org/
+* http://github.com/gunark/jasperserver-client
 
 == DESCRIPTION:
 
-FIX (describe your package)
-
-== FEATURES/PROBLEMS:
-
-* FIX (list of features or problems)
+Ruby-based client for JasperServer. Allows for requesting and fetching reports 
+from a networked JasperServer over SOAP.
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+  # Create a new client instance for the JasperServer running at 
+  # http://example.com/jasperserver
+  client = JasperServer::Client.new("http://example.com/jasperserver/services/repository",
+                                    "jasperadmin", "secret!")
+                                    
+  # Create a request for a report. The first parameter is the full path of the 
+  # report unit, the second is the desired output format, and the last is an 
+  # optional hash of parameters to be fed into the report.
+  request = JasperServer::Request.new("/example/my-report", "PDF", {'fruit' => 'apple'})
+  
+  # Send the report request to the server and return the output data.
+  pdf_data = client.request_report(request)
+  
+  # Write the report data to a file (instead you could send the data to the user's
+  # browser if you're doing this in, for example, a Rails controller action).
+  File.open('/tmp/report.pdf', 'w') do |f|
+    f.puts(pdf_data)
+  end
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* A Ruby interpreter.
+* The soap4r gem, version 1.5.8 or greater. (This should be automatically
+  installed as a dependency; otherwise run `gem install soap4r`.)
+* A running JasperServer instance, obviously. The client has been tested
+  with versions 2.0 through to 3.0 of JasperServer.
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* Via RubyGems: `gem install jasperserver-client`
 
 == LICENSE:
 
-(The MIT License)
+JasperServer-Client is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published 
+by the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
 
-Copyright (c) 2008 FIXME full name
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+JasperServer-Client is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+You should have received a copy of the GNU Lesser General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.

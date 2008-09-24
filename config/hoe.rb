@@ -35,7 +35,7 @@ VERS = JasperServer::VERSION::STRING + (REV ? ".#{REV}" : "")
 RDOC_OPTS = ['--quiet', '--title', 'jasperserver-client documentation',
     "--opname", "index.html",
     "--line-numbers",
-    "--main", "README",
+    "--main", "README.txt",
     "--inline-source"]
 
 class Hoe
