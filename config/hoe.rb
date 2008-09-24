@@ -7,6 +7,9 @@ GEM_NAME = 'jasperserver-client' # what ppl will type to install your gem
 RUBYFORGE_PROJECT = 'jasper-client' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
+EXTRA_DEPENDENCIES = [
+  ['soap4r', '>= 1.5.8']
+]
 
 @config_file = "~/.rubyforge/user-config.yml"
 @config = nil
@@ -32,7 +35,7 @@ REV = nil
 # UNCOMMENT IF REQUIRED:
 # REV = YAML.load(`svn info`)['Revision']
 VERS = JasperServer::VERSION::STRING + (REV ? ".#{REV}" : "")
-RDOC_OPTS = ['--quiet', '--title', 'jasperserver-client documentation',
+RDOC_OPTS = ['--quiet', '--title', 'JasperServer-Client documentation',
     "--opname", "index.html",
     "--line-numbers",
     "--main", "README.txt",
@@ -64,7 +67,7 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   end
 
 CHANGES = $hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
-PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PROJECT}/#{GEM_NAME}"
+PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PROJECT}"
 $hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
 $hoe.rsync_args = '-av --delete --ignore-errors'
 $hoe.spec.post_install_message = File.open(File.dirname(__FILE__) + "/../PostInstall.txt").read rescue ""

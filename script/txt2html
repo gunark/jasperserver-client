@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 GEM_NAME = 'jasperserver-client' # what ppl will type to install your gem
-RUBYFORGE_PROJECT = 'jasperserver-client'
+RUBYFORGE_PROJECT = 'jasper-client'
 
 require 'rubygems'
 begin
@@ -15,9 +15,9 @@ end
 require 'redcloth'
 require 'syntax/convertors/html'
 require 'erb'
-require File.dirname(__FILE__) + "/../lib/#{GEM_NAME}/version.rb"
+require File.dirname(__FILE__) + "/../lib/jasper_server/version.rb"
 
-version  = Jasperserver-client::VERSION::STRING
+version  = JasperServer::VERSION::STRING
 download = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 
 def rubyforge_project_id
