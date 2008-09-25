@@ -1,12 +1,12 @@
 h1. JasperServer-Client
 
-h3. (a Ruby Client for JasperServer)
+h3. /a Ruby Client for JasperServer/
 
 
-h2. What
+h2. What is it?
 
-A Ruby-based client for "JasperServer":http://www.jaspersoft.com/JasperSoft_JasperServer.html. 
-Allows for requesting and fetching reports from a networked JasperServer over SOAP.
+JapserServer-Client is a Ruby-based client for "JasperServer":http://www.jaspersoft.com/JasperSoft_JasperServer.html.
+The library allows for requesting and fetching reports from a networked JasperServer over SOAP.
 
 h2. Installing
 
@@ -21,6 +21,7 @@ You will need:
 * A running "JasperServer":http://www.jaspersoft.com/JasperSoft_JasperServer.html instance to talk to.
 
 h2. Demonstration of usage
+
 
 
 h2. How to submit patches

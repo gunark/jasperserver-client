@@ -1,14 +1,17 @@
 = JasperServer-Client
 
-* http://jasper-client.rubyforge.org/
+* http://jasper-client.rubyforge.org
 * http://github.com/gunark/jasperserver-client
 
 == DESCRIPTION:
 
-Ruby-based client for JasperServer. Allows for requesting and fetching reports 
-from a networked JasperServer over SOAP.
+JasperServer-Client is -- you guessed it -- a Ruby-based client for JasperServer. 
+The library allows for requesting and fetching reports from a networked JasperServer over SOAP.
 
-== SYNOPSIS:
+== USAGE:
+
+Here we request a report to be generated in PDF format and then save the resulting data
+to a local file:
 
   # Create a new client instance for the JasperServer running at 
   # http://example.com/jasperserver
@@ -32,14 +35,15 @@ from a networked JasperServer over SOAP.
 == REQUIREMENTS:
 
 * A Ruby interpreter.
-* The soap4r gem, version 1.5.8 or greater. (This should be automatically
-  installed as a dependency; otherwise run `gem install soap4r`.)
-* A running JasperServer instance, obviously. The client has been tested
-  with versions 2.0 through to 3.0 of JasperServer.
+* The *soap4r* gem, version 1.5.8 or greater. (This should be automatically
+  installed as a dependency; otherwise run <tt>gem install soap4r</tt>.)
+* A running JasperServer instance. The client has been tested  with versions 2.0 through 
+  to 3.0 of JasperServer.
 
 == INSTALL:
 
-* Via RubyGems: `gem install jasperserver-client`
+* Via RubyGems: 
+    gem install jasperserver-client
 
 == LICENSE:
 

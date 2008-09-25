@@ -31,6 +31,9 @@ Run 'rubyforge setup' to prepare your env for access to Rubyforge
 end
 
 
+ENV['NODOT'] = '1'
+
+
 REV = nil
 # UNCOMMENT IF REQUIRED:
 # REV = YAML.load(`svn info`)['Revision']
