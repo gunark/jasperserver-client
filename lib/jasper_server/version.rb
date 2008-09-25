@@ -1,7 +1,7 @@
 module JasperServer
   module VERSION #:nodoc:
-    MAJOR = 5
-    MINOR = 0
+    MAJOR = 0
+    MINOR = 5
     TINY  = 0
 
     STRING = [MAJOR, MINOR, TINY].join('.')
