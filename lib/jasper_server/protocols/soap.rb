@@ -22,8 +22,6 @@ module JasperServer
           elsif value.kind_of? Time
             ts = ReportRequest.convert_time_to_jasper_timestamp(value)
             params_xml << %{<parameter name="#{name}">#{ts}</parameter>\n}
-          elsif value.kind_of? Integer
-            params_xml << %{<parameter name="#{name}">#{value}</parameter>\n}
           elsif !value.blank?
             params_xml << %{<parameter name="#{name}"><![CDATA[#{value}]]></parameter>\n}
           end
