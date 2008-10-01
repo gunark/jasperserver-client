@@ -1,6 +1,8 @@
 require 'jasper_server/protocols/soap'
 
 module JasperServer
+
+  # The client through which all report requests are sent to the JasperServer.
   class Client
     
     # Create a new instance of the client.
@@ -24,10 +26,10 @@ module JasperServer
       @jasper_password  = password
     end
     
-    # Request a report from the server based on the given ReportRequest.
+    # Request a report from the server based on the ReportRequest object you provide.
     # Returns the report data. 
     # 
-    # For example if your request specifies 'PDF' as the output format, PDF 
+    # For example if your request specifies <tt>PDF</tt> as the output format, PDF 
     # binary data will be returned. 
     #
     #   client = JasperServer::Client.new("http://example.com/jasperserver/services/repository",
@@ -38,7 +40,7 @@ module JasperServer
     #     f.puts(pdf_data)
     #   end
     #
-    # For debugging purposes, try requesting output in 'CSV' format, since 
+    # For debugging purposes, try requesting output in <tt>CSV</tt> format, since 
     # request_report will then return an easily readable String.
     def request_report(request)
       soap = JasperServer::Protocols::SOAP.new

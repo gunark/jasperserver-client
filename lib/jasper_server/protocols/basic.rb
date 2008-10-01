@@ -3,7 +3,7 @@ require 'jasper_server/error'
 module JasperServer
   module Protocols
     
-    # THIS DOES NOT WORK!!!
+    # <b>THIS PROTOCOL ADAPTER DOES NOT YET WORK!!!</b>
     #
     # This was an attempt at fetching reports using scraping... unfortunately
     # I can't figure out how to fake the Spring authentication session :(

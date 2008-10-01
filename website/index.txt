@@ -1,12 +1,12 @@
 h1. JasperServer-Client
 
-h3. (a Ruby Client for JasperServer)
+h3. /a Ruby Client for JasperServer/
 
 
-h2. What
+h2. What is it?
 
-A Ruby-based client for "JasperServer":http://www.jaspersoft.com/JasperSoft_JasperServer.html. 
-Allows for requesting and fetching reports from a networked JasperServer over SOAP.
+JapserServer-Client is a Ruby-based client for "JasperServer":http://www.jaspersoft.com/JasperSoft_JasperServer.html.
+The library allows for requesting and fetching reports from a networked JasperServer over SOAP.
 
 h2. Installing
 
@@ -20,8 +20,10 @@ You will need:
 * The *soap4r* gem, version 1.5.8 or greater <pre>gem install soap4r</pre>
 * A running "JasperServer":http://www.jaspersoft.com/JasperSoft_JasperServer.html instance to talk to.
 
-h2. Demonstration of usage
+h2. Documentation and demonstration of usage
 
+* For usage inside a Rails controller see "http://github.com/gunark/jasperserver-client/wikis/railsusageexamples":http://github.com/gunark/jasperserver-client/wikis/railsusageexamples
+* API docs with some more example are available at "http://jasper-client.rubyforge.org/rdoc/":http://jasper-client.rubyforge.org/rdoc/
 
 h2. How to submit patches
 
