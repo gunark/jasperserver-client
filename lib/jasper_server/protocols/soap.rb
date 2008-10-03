@@ -37,7 +37,7 @@ module JasperServer
           </resourceDescriptor>
         </request>|
         
-        RAILS_DEFAULT_LOGGER.debug "#{self.name.name} Request:\n#{request}" if Object.const_defined?('RAILS_DEFAULT_LOGGER')
+        RAILS_DEFAULT_LOGGER.debug "#{self.class.name} Request:\n#{request}" if Object.const_defined?('RAILS_DEFAULT_LOGGER')
     
         result = @driver.runReport(request)
         
