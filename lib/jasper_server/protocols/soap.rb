@@ -37,11 +37,11 @@ module JasperServer
           </resourceDescriptor>
         </request>|
         
-        RAILS_DEFAULT_LOGGER.debug "#{self.name} Request:\n#{request}" if Object.const_defined?('RAILS_DEFAULT_LOGGER')
+        RAILS_DEFAULT_LOGGER.debug "#{self.name.name} Request:\n#{request}" if Object.const_defined?('RAILS_DEFAULT_LOGGER')
     
         result = @driver.runReport(request)
         
-        RAILS_DEFAULT_LOGGER.debug "#{self.name} Response:\n#{result}" if Object.const_defined?('RAILS_DEFAULT_LOGGER')
+        RAILS_DEFAULT_LOGGER.debug "#{self.class.name} Response:\n#{result}" if Object.const_defined?('RAILS_DEFAULT_LOGGER')
         
         xml = XmlSimple.xml_in_string(result)
         unless xml['returnCode'].first.to_i == 0
