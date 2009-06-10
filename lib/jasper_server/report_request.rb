@@ -18,6 +18,7 @@ module JasperServer
     #                  are automatically adjusted for timezone).
     #                  E.g. <tt>{ 'fruit' => "Apple", 'date' => Time.now}</tt>
     def initialize(report_unit, output_format, report_params = {})
+      raise ArgumentError, "Missing output_format in report request!" if output_format.nil? || output_format.empty?
       @report_unit   = report_unit
       @output_format = output_format.upcase
       @report_params = report_params
