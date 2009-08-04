@@ -11,7 +11,8 @@ module JasperServer
     #        "http://<hostname>:<port>/jasperserver/services/repository"
     # username :: The username used to connect to the JasperServer.
     # password :: The password used to connect to the JasperServer.
-    def initialize(url, username, password)
+    # timeout  :: Maximum time to wait for a response from the JasperServer (default it 60 seconds).
+    def initialize(url, username, password, timeout = 60)
       unless url =~ /\/services\/repository\/?$/
         # add the /services/repository suffix to the URL if the user forgot
         # to include it
@@ -24,6 +25,7 @@ module JasperServer
       @jasper_url       = url
       @jasper_username  = username
       @jasper_password  = password
+      @timeout = timeout
     end
     
     # Request a report from the server based on the ReportRequest object you provide.
@@ -44,7 +46,7 @@ module JasperServer
     # request_report will then return an easily readable String.
     def request_report(request)
       soap = JasperServer::Protocols::SOAP.new
-      soap.connect(@jasper_url, @jasper_username, @jasper_password)
+      soap.connect(@jasper_url, @jasper_username, @jasper_password, @timeout)
       soap.request_report_via_soap(request)
     end
 
