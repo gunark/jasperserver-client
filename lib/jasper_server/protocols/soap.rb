@@ -88,14 +88,15 @@ module JasperServer
         result.instance_variable_get(:@env).external_content['report'].data.content
       end
       
-      def connect(url, username, password)
-        @driver = connect_to_soap_service(url, username, password)
+      def connect(url, username, password, timeout = 60)
+        @driver = connect_to_soap_service(url, username, password, timeout)
       end
       
       protected
-      def connect_to_soap_service(url, username, password)
+      def connect_to_soap_service(url, username, password, timeout = 60)
         driver = ::SOAP::RPC::Driver.new(url, JASPER_URN)
         driver.options['protocol.http.basic_auth'] << [url, username, password]
+        driver.options['receive_timeout'] = timeout
         
         driver.add_method('runReport', 'requestXmlString')
         return driver
