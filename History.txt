@@ -1,3 +1,9 @@
-== 0.5.0 2008-09-25
+== 0.2.0 2009-08-14
+
+* Should now work with Rails 2.3
+* Can now specify the maximum time the client will wait for a response from the Jasper Server
+
+
+== 0.1.0 2008-09-25
 
 * Initial release

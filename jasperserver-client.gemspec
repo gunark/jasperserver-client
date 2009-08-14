@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name = %q{jasperserver-client}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matt Zukowski"]
-  s.date = %q{2008-09-24}
+  s.date = %q{2009-08-14}
   s.description = %q{Ruby-based client for JasperServer. Allows for requesting and fetching reports using Ruby from a networked JasperServer over SOAP.}
   s.email = ["matt@zukowski.ca"]
   s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt"]
