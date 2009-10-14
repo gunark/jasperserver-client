@@ -24,9 +24,11 @@ module JasperServer
       @report_params = report_params
     end
     
-    # Converts the given Time into a timestamp integer acceptable by JasperServer.
+    # Converts the given Time/DateTime/Date into a timestamp integer acceptable by JasperServer.
     # The timezone adjustment is performed (converted to UTC).
     def self.convert_time_to_jasper_timestamp(time)
+      time = Time.parse(time.to_s) unless time.kind_of?(Time)
+
       # convert to milisecond timestamp
       ts = time.to_i * 1000
       # adjust for timezone

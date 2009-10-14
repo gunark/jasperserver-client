@@ -40,15 +40,18 @@ module JasperServer
         
         params_xml = ""
         params.each do |name, value|
-          if value.kind_of? Array
+          case value
+          when Array
             value.each do |item|
               params_xml << %{<parameter name="#{name}" isListItem="true">#{@@html_encoder.encode(item, :decimal)}</parameter>\n}
             end
-          elsif value.kind_of? Time
+          when Time, DateTime, Date
             ts = ReportRequest.convert_time_to_jasper_timestamp(value)
             params_xml << %{<parameter name="#{name}">#{ts}</parameter>\n}
-          elsif !value.blank?
-            params_xml << %{<parameter name="#{name}"><![CDATA[#{value}]]></parameter>\n}
+          else
+            unless value.blank?
+              params_xml << %{<parameter name="#{name}"><![CDATA[#{value}]]></parameter>\n}
+            end
           end
         end
         
