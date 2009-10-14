@@ -44,7 +44,7 @@ module JasperServer
             value.each do |item|
               params_xml << %{<parameter name="#{name}" isListItem="true">#{@@html_encoder.encode(item, :decimal)}</parameter>\n}
             end
-          elsif value.kind_of? Time
+          elsif value.kind_of?(Time) || value.kind_of?(DateTime) || value.kind_of?(Date)
             ts = ReportRequest.convert_time_to_jasper_timestamp(value)
             params_xml << %{<parameter name="#{name}">#{ts}</parameter>\n}
           elsif !value.blank?
