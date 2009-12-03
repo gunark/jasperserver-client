@@ -1,6 +1,31 @@
 require 'jasper_server/protocols/soap_monkeypatch'
 require 'jasper_server/error'
 
+gem 'xml-simple'
+require 'xmlsimple'
+
+if Object.const_defined?(:XmlSimple) && !XmlSimple.respond_to?(:xml_in_string)
+  class XmlSimple
+    # Same as xml_in but doesn't try to smartly shoot itself in the foot.
+    def xml_in_string(string, options = nil)
+      handle_options('in', options)
+
+      @doc = parse(string)
+      result = collapse(@doc.root)
+
+      if @options['keeproot']
+        merge({}, @doc.root.name, result)
+      else
+        result
+      end
+    end
+
+    def self.xml_in_string(string, options = nil)
+      new.xml_in_string(string, options)
+    end
+  end
+end
+
 module JasperServer
   module Protocols
     class SOAP
@@ -42,8 +67,20 @@ module JasperServer
         result = @driver.runReport(request)
         
         RAILS_DEFAULT_LOGGER.debug "#{self.class.name} Response:\n#{result}" if Object.const_defined?('RAILS_DEFAULT_LOGGER')
-        
-        xml = XmlSimple.xml_in_string(result)
+
+        if Object.const_defined?(:ActiveSupport) && ActiveSupport.const_defined?(:XmlMini)
+          # for Rails 2.3+
+          xml = ActiveSupport::XmlMini.parse(result)
+          xml = xml['operationResult']
+          xml.each do |k,v|
+            if v.kind_of?(Hash) && v[ActiveSupport::XmlMini.backend::CONTENT_KEY]
+              xml[k] = [v[ActiveSupport::XmlMini.backend::CONTENT_KEY]]
+            end
+          end
+        else
+          xml = XmlSimple.xml_in_string(result)
+        end
+
         unless xml['returnCode'].first.to_i == 0
           raise JasperServer::Error, "JasperServer replied with an error: #{xml['returnMessage'] ? xml['returnMessage'].first : xml.inspect}"
         end
@@ -51,14 +88,16 @@ module JasperServer
         result.instance_variable_get(:@env).external_content['report'].data.content
       end
       
-      def connect(url, username, password)
-        @driver = connect_to_soap_service(url, username, password)
+      def connect(url, username, password, timeout = 60)
+        @driver = connect_to_soap_service(url, username, password, timeout)
       end
       
       protected
-      def connect_to_soap_service(url, username, password)
+      def connect_to_soap_service(url, username, password, timeout = 60)
         driver = ::SOAP::RPC::Driver.new(url, JASPER_URN)
         driver.options['protocol.http.basic_auth'] << [url, username, password]
+        driver.options['receive_timeout'] = timeout
+
         
         driver.add_method('runReport', 'requestXmlString')
         return driver
