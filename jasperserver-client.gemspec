@@ -1,14 +1,14 @@
 Gem::Specification.new do |s|
   s.name = %q{jasperserver-client}
-  s.version = "0.1.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matt Zukowski"]
-  s.date = %q{2008-09-24}
+  s.date = %q{2009-08-14}
   s.description = %q{Ruby-based client for JasperServer. Allows for requesting and fetching reports using Ruby from a networked JasperServer over SOAP.}
   s.email = ["matt@zukowski.ca"]
   s.extra_rdoc_files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt"]
-  s.files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README", "README.txt", "Rakefile", "config/hoe.rb", "config/requirements.rb", "init.rb", "lib/jasper_server/client.rb", "lib/jasper_server/error.rb", "lib/jasper_server/protocols/basic.rb", "lib/jasper_server/protocols/soap.rb", "lib/jasper_server/protocols/soap_monkeypatch.rb", "lib/jasper_server/report_request.rb", "lib/jasper_server/version.rb", "lib/jasperserver-client.rb", "script/console", "script/destroy", "script/generate", "script/txt2html", "setup.rb", "tasks/deployment.rake", "tasks/environment.rake", "tasks/website.rake", "test/test_helper.rb", "test/test_jasperserver-client.rb"]
+  s.files = ["History.txt", "License.txt", "Manifest.txt", "PostInstall.txt", "README.txt", "Rakefile", "config/hoe.rb", "config/requirements.rb", "init.rb", "lib/jasper_server/client.rb", "lib/jasper_server/error.rb", "lib/jasper_server/protocols/basic.rb", "lib/jasper_server/protocols/soap.rb", "lib/jasper_server/protocols/soap_monkeypatch.rb", "lib/jasper_server/report_request.rb", "lib/jasper_server/version.rb", "lib/jasperserver-client.rb", "script/console", "script/destroy", "script/generate", "script/txt2html", "setup.rb", "tasks/deployment.rake", "tasks/environment.rake", "tasks/website.rake", "test/test_helper.rb", "test/test_jasperserver-client.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://jasper-client.rubyforge.org}
   s.post_install_message = %q{

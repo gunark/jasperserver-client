@@ -18,14 +18,17 @@ module JasperServer
     #                  are automatically adjusted for timezone).
     #                  E.g. <tt>{ 'fruit' => "Apple", 'date' => Time.now}</tt>
     def initialize(report_unit, output_format, report_params = {})
+      raise ArgumentError, "Missing output_format in report request!" if output_format.nil? || output_format.empty?
       @report_unit   = report_unit
       @output_format = output_format.upcase
       @report_params = report_params
     end
     
-    # Converts the given Time into a timestamp integer acceptable by JasperServer.
+    # Converts the given Time/DateTime/Date into a timestamp integer acceptable by JasperServer.
     # The timezone adjustment is performed (converted to UTC).
     def self.convert_time_to_jasper_timestamp(time)
+      time = Time.parse(time.to_s) unless time.kind_of?(Time)
+
       # convert to milisecond timestamp
       ts = time.to_i * 1000
       # adjust for timezone
