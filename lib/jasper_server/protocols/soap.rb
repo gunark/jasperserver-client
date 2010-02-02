@@ -43,7 +43,7 @@ module JasperServer
           case value
           when Array
             value.each do |item|
-              params_xml << %{<parameter name="#{name}" isListItem="true">#{@@html_encoder.encode(item, :decimal)}</parameter>\n}
+              params_xml << %{<parameter name="#{name}" isListItem="true"><![CDATA[#{item}]]></parameter>\n}
             end
           when Time, DateTime, Date
             ts = ReportRequest.convert_time_to_jasper_timestamp(value)
