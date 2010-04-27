@@ -1,3 +1,8 @@
+== 1.0.0 2010-04-27
+
+* Should now work when Nokogiri is being used as the ActiveSupport MiniXml backend.
+* Releasing as 1.0. It appears that we are mostly bug-free.
+
 == 0.2.0 2009-08-14
 
 * Should now work with Rails 2.3
