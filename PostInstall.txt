@@ -1,4 +1,0 @@
-
-For more information on jasperserver-client, see http://jasperserver-client.rubyforge.org
-
-
